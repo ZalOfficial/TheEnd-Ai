@@ -1,1 +1,170 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>TheEnd Execution</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #111;
+      color: white;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+    }
+
+    h1 {
+      font-size: 40px;
+      font-weight: bold;
+      margin-bottom: 40px;
+    }
+
+    input[type="text"], input[type="password"] {
+      padding: 15px;
+      font-size: 16px;
+      width: 90%;
+      max-width: 400px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      margin-bottom: 20px;
+      text-align: center;
+      background: white;
+      color: black;
+      outline: none;
+    }
+
+    .login-box button, .button-group button {
+      margin: 10px;
+      padding: 12px 30px;
+      font-size: 16px;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      background-color: #007bff;
+      color: white;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.2s;
+    }
+
+    .login-box button:hover, .button-group button:hover {
+      background-color: #0056b3;
+      transform: scale(1.05);
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    #logoutBtn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 14px;
+      padding: 10px 20px;
+      background-color: red;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      display: none;
+    }
+
+    #status {
+      margin-top: 20px;
+      font-size: 14px;
+    }
+
+    .loading {
+      margin-top: 10px;
+      font-size: 13px;
+      color: #ccc;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>TheEnd Execution</h1>
+
+  <button id="logoutBtn" onclick="logout()">LOG OUT</button>
+
+  <div class="login-box" id="loginBox">
+    <input type="text" id="username" placeholder="Username"><br>
+    <input type="password" id="password" placeholder="Password"><br>
+    <button onclick="login()">LOGIN</button>
+  </div>
+
+  <div id="mainContent" class="hidden">
+    <input type="text" id="nomor" placeholder="Masukkan Nomor Target"><br>
+    <div class="button-group">
+      <button onclick="kirimKeBot('Forclose')">Forclose</button>
+      <button onclick="kirimKeBot('INVIS')">Delay</button>
+    </div>
+    <div id="loading" class="loading hidden">Mengirim...</div>
+    <div id="status"></div>
+  </div>
+
+  <script>
+    function login() {
+      const user = document.getElementById("username").value;
+      const pass = document.getElementById("password").value;
+
+      if (user === "ZalOfficial" && pass === "Zal") {
+        document.getElementById("loginBox").style.display = "none";
+        document.getElementById("mainContent").classList.remove("hidden");
+        document.getElementById("logoutBtn").style.display = "inline-block";
+      } else {
+        alert("Login gagal! Username atau password salah.");
+      }
+    }
+
+    function logout() {
+      document.getElementById("mainContent").classList.add("hidden");
+      document.getElementById("loginBox").style.display = "block";
+      document.getElementById("logoutBtn").style.display = "none";
+      document.getElementById("status").innerHTML = "";
+    }
+
+    function kirimKeBot(mode) {
+      const nomor = document.getElementById("nomor").value;
+      const status = document.getElementById("status");
+      const loading = document.getElementById("loading");
+
+      if (!nomor) {
+        alert("Masukkan nomor terlebih dahulu!");
+        return;
+      }
+
+      status.innerHTML = "";
+      loading.classList.remove("hidden");
+
+      fetch("https://your-server.com/send", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ nomor: nomor, mode: mode })
+      })
+      .then(res => res.text())
+      .then(res => {
+        loading.classList.add("hidden");
+        status.innerHTML = `<span style="color: green;">✅ Berhasil dikirim!</span>`;
+      })
+      .catch(err => {
+        loading.classList.add("hidden");
+        status.innerHTML = `<span style="color: red;">❌ Gagal mengirim!</span>`;
+      });
+    }
+  </script>
+
+</body>
+</html>
