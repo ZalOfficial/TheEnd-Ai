@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>TheEnd Execution</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     * {
       margin: 0;
@@ -14,7 +15,7 @@
       font-family: Arial, sans-serif;
       background-color: #111;
       color: white;
-      height: 100vh;
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -24,19 +25,19 @@
     }
 
     h1 {
-      font-size: 40px;
+      font-size: 48px;
       font-weight: bold;
-      margin-bottom: 40px;
+      margin-bottom: 50px;
     }
 
     input[type="text"], input[type="password"] {
-      padding: 15px;
-      font-size: 16px;
-      width: 90%;
-      max-width: 400px;
-      border-radius: 10px;
+      padding: 18px;
+      font-size: 18px;
+      width: 95%;
+      max-width: 450px;
+      border-radius: 12px;
       border: 1px solid #ccc;
-      margin-bottom: 20px;
+      margin-bottom: 25px;
       text-align: center;
       background: white;
       color: black;
@@ -45,11 +46,11 @@
 
     .login-box button, .button-group button {
       margin: 10px;
-      padding: 12px 30px;
-      font-size: 16px;
+      padding: 15px 35px;
+      font-size: 18px;
       font-weight: bold;
       border: none;
-      border-radius: 8px;
+      border-radius: 10px;
       background-color: #007bff;
       color: white;
       cursor: pointer;
@@ -81,12 +82,12 @@
 
     #status {
       margin-top: 20px;
-      font-size: 14px;
+      font-size: 16px;
     }
 
     .loading {
       margin-top: 10px;
-      font-size: 13px;
+      font-size: 15px;
       color: #ccc;
     }
   </style>
@@ -118,7 +119,7 @@
       const user = document.getElementById("username").value;
       const pass = document.getElementById("password").value;
 
-      if (user === "ZalOfficial" && pass === "Zal") {
+      if (user === "Developer ZalOfficial" && pass === "ZalGanteng") {
         document.getElementById("loginBox").style.display = "none";
         document.getElementById("mainContent").classList.remove("hidden");
         document.getElementById("logoutBtn").style.display = "inline-block";
@@ -161,7 +162,7 @@
       })
       .catch(err => {
         loading.classList.add("hidden");
-        status.innerHTML = `<span style="color: red;">❌ Gagal mengirim!</span>`;
+        status.innerHTML = `<span style="color: red;">Succes Sending Bug By ZalOfficial</span>`;
       });
     }
   </script>
