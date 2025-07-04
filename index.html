@@ -1,241 +1,222 @@
-<!DOCTYPE html>
-<html lang="id">
+<!DOCTYPE html><html lang="id">
 <head>
   <meta charset="UTF-8">
-  <title>Web Api By ZalOfficial</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap" rel="stylesheet">
+  <title>Katalog Produk ZalOfficial</title>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
   <style>
-    * {
+    body {
+      font-family: 'Rubik', sans-serif;
+      background: linear-gradient(to bottom right, #000428, #004e92);
+      color: #fff;
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
     }
-
-    body {
-      font-family: 'Orbitron', sans-serif;
-      background: radial-gradient(circle at top, #010f1f, #000000);
-      color: #00bfff;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding-bottom: 90px;
-    }
-
     .container {
-      background: rgba(0, 0, 64, 0.2);
-      border: 2px solid #00bfff;
-      border-radius: 20px;
-      padding: 40px 30px;
-      width: 90%;
-      max-width: 480px;
-      box-shadow: 0 0 35px #00bfff99;
-      backdrop-filter: blur(14px);
-      animation: fadeIn 1s ease-in-out;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 30px 20px;
     }
-
-    #type-text {
-      font-size: 26px;
-      margin-bottom: 30px;
-      color: #00d9ff;
-      text-shadow: 0 0 10px #00bfff, 0 0 25px #0099ff;
-      min-height: 36px;
-    }
-
-    input {
-      background: rgba(255, 255, 255, 0.07);
-      border: 1px solid #00bfff99;
-      border-radius: 12px;
-      padding: 14px;
-      font-size: 16px;
-      color: #00d9ff;
-      width: 100%;
-      margin-bottom: 15px;
-      outline: none;
+    h1 {
       text-align: center;
+      margin-bottom: 40px;
+      font-size: 32px;
+      color: #00d9ff;
     }
-
-    input::placeholder {
-      color: #66cfff;
-    }
-
-    button {
-      background: linear-gradient(to right, #0077ff, #00bfff);
-      color: white;
-      border: none;
-      border-radius: 12px;
-      padding: 12px 30px;
-      font-size: 15px;
-      font-weight: bold;
-      cursor: pointer;
-      box-shadow: 0 0 14px #00bfff;
-      transition: 0.3s ease;
-    }
-
-    button:hover {
-      transform: scale(1.05);
-      background: linear-gradient(to right, #00bfff, #0077ff);
-    }
-
-    .button-group {
+    .produk {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 15px;
-      margin-top: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
     }
-
-    #logoutBtn {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      padding: 8px 16px;
-      background: crimson;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      font-weight: bold;
-      display: none;
-      box-shadow: 0 0 10px crimson;
+    .card {
+      background: #02192f;
+      border-radius: 12px;
+      box-shadow: 0 0 15px #00d9ff55;
+      padding: 20px;
+      transition: 0.3s;
     }
-
-    .hidden {
-      display: none;
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 25px #00d9ffaa;
     }
-
-    .loading {
+    .card h3 {
+      color: #00d9ff;
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+    .card p {
+      margin-bottom: 10px;
       font-size: 14px;
-      color: #66cfff;
+      color: #ddd;
+      white-space: pre-line;
+    }
+    .order {
+      display: inline-block;
       margin-top: 10px;
-      font-style: italic;
+      background: #00bfff;
+      color: #000;
+      padding: 10px 16px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      box-shadow: 0 0 10px #00bfff88;
     }
-
-    #status {
-      margin-top: 12px;
-      font-size: 15px;
-    }
-
-    .footer-info {
-      position: fixed;
-      bottom: 10px;
-      left: 50%;
-      transform: translateX(-50%);
-      font-size: 14px;
+    .footer {
       text-align: center;
-      color: #00eaff;
-      font-family: 'Orbitron', sans-serif;
-      text-shadow: 0 0 6px #00d9ff;
-      line-height: 1.6em;
-      pointer-events: none;
-      user-select: none;
-    }
-
-    @keyframes fadeIn {
-      from {
-        transform: translateY(30px);
-        opacity: 0;
-      }
-      to {
-        transform: translateY(0);
-        opacity: 1;
-      }
+      color: #ccc;
+      font-size: 14px;
+      padding: 20px 10px;
+      margin-top: 40px;
     }
   </style>
 </head>
 <body>
+  <div class="container">
+    <h1>Katalog Produk ZalOfficial</h1>
+    <div class="produk"><div class="card">
+    <h3>Open Apk/Web Bug</h3>
+    <p>Harga :
+70K No Update
+110K Free Update Permanen
 
-  <button id="logoutBtn" onclick="logout()">LOGOUT</button>
+Keuntungan :
+• Bebas Bug Sepuasnya
+• Efek Bug Forclose Invisible & Delay Invisible
+• Cara Make Simple Ga Kek Sc' Harus Ini Harus Itu</p> <a href="https://wa.me/6289524134626?text=Bang+Mau+Order+Apk%2FWeb+Bug" class="order">Order Langsung</a> </div>
 
-  <div class="container" id="loginBox">
-    <h1 id="type-text"></h1>
-    <input type="text" id="username" placeholder="Username">
-    <input type="password" id="password" placeholder="Password">
-    <button onclick="login()">ENTER</button>
+
+
+<div class="card">
+    <h3>Open Panel Pterodactyl</h3>
+    <p>List Harga Panel :
+📦 6GB : 2K 
+📦 7GB : 3K 
+📦 8GB : 4K 
+📦 9GB : 5K 
+📦 10GB : 6K 
+📦 Unlimited: 5K
+
+Keuntungan:
+• Panel Anti Delay 
+• Anti Rusuh
+• Anti Curi Sc
+• FastResp 
+• Garansi 30 Hari</p> <a href="https://wa.me/6289524134626?text=Bang+Mau+Order+Panel+Pterodactyl" class="order">Order Langsung</a> </div>
+
+
+
+<div class="card">
+    <h3>Open VPS (Virtual Private Server)</h3>
+    <p>List Harga Vps :
+☁ 1GB Core1 : 20K 
+☁ 2GB Core1 : 25K 
+☁ 2GB Core2 : 30K 
+☁ 4GB Core2 : 40K 
+☁ 8GB Core4 : 55K 
+☁ 16GB Core4 : 75K
+
+Keuntungan Buy VPS:
+• Free Req Nama Domain Free
+• Pasang Egg Bot WA 
+• Free Install Wings 
+• Garansi 15 Hari (1x Claim)</p> <a href="https://wa.me/6289524134626?text=Bang+Mau+Order+VPS" class="order">Order Langsung</a> </div>
+
+
+
+<div class="card">
+    <h3>Jasa Pembuatan Script Bug</h3>
+    <p>Harga : 50K - 80K
+
+Efek & Keuntungan:
+• Function Dari Gw 
+• Efek Forclose & Delay 
+• Request Nama, Foto, Style Bisa Custom Sesuka Hati</p> <a href="https://wa.me/6289524134626?text=Bang+Mau+Jasa+Buat+Script+Bug" class="order">Order Langsung</a> </div>
+
+
+
+<div class="card">
+    <h3>Jasa Rename Script</h3>
+    <p>Harga Rename : 15K
+
+Keuntungan:
+• Req Foto Script 
+• Tampilan Jadi Punya Elu
+• Nama Sesuai Keinginan Elu
+• Auto Jadi Developer Developer</p> <a href="https://wa.me/6289524134626?text=Bang+Mau+Rename+Script" class="order">Order Langsung</a> </div>
+
+
+
+<div class="card">
+    <h3>Sell Function Bug</h3>
+    <p>Harga Setiap Function:
+Forclose 1-5 Msg : 50K 
+Matiin Data Tetep Forclose : 60K
+Delay Hard Invisible : 30K
+
+Keuntungan :
+• Free Pemasangan Function
+• Free Add Case
+• Function Bisa Dijual</p> <a href="https://wa.me/6289524134626?text=Bang+Mau+Order+Function+Bug" class="order">Order Langsung</a> </div>
+
+
+
+<div class="card">
+    <h3>Open Reseller Script The End</h3>
+    <p>Harga Reseller : 50K
+
+Keuntungan:
+• Bisa Jual Script VIP 
+• Bisa Open PO Sendiri 
+• Masuk GB Reseller 
+• Diutamakan Saat Update</p> <a href="https://wa.me/6289524134626?text=Bang+Mau+Join+Reseller+The+End" class="order">Order Langsung</a> </div>
+
+
+
+<div class="card">
+    <h3>Open Partner Script The End</h3>
+    <P>Harga Partner : 80K
+
+Keuntungan :
+• Admin All GB 
+• Masuk Credit Script 
+• Bisa Open Reseller The End
+• Bisa Open PO Sendiri
+• Bisa Jual Semua VIP Script</p> <a href="https://wa.me/6289524134626?text=Bang+Mau+Join+Partner+The+End" class="order">Order Langsung</a> </div>
+
+
+
+<div class="card">
+    <h3>Open Murid Bug WhatsApp/Telegram</h3>
+    <p>Harga Murbug :
+1 Minggu : 5K 
+1 Bulan : 15K
+Permanen : 25K
+
+Keuntungan:
+• Bisa Open Jasbug 
+• Bug Sepuasnya Asal Tau Jeda
+• Cara Pake Simple & Gampang
+• Bisa Bugin Orang Terdekat</p> <a href="https://wa.me/6289524134626?text=Bang+Mau+Belajar+Bug+WA" class="order">Order Langsung</a> </div>
+
+
+
+<div class="card">
+    <h3>Open Jasa Bug</h3>
+    <p>Harga Jasbug : 3K
+
+Keuntungan :
+• Auto C1
+• Target Mokad
+• Privasi Terjaga</p> <a href="https://wa.me/6289524134626?text=Bang+Mau+Pake+Jasa+Bug" class="order">Order Langsung</a> </div>
+
+
+
+</div>
+<div class="footer">
+  Hubungi ZalOfficial via <a href="https://wa.me/6289524134626" style="color:#00d9ff; text-decoration:none; font-weight:bold;">WhatsApp</a>
+  atau <a href="https://t.me/ZalOffc" style="color:#00d9ff; text-decoration:none; font-weight:bold;">Telegram</a>
+</div>
+
   </div>
-
-  <div class="container hidden" id="mainContent">
-    <h1 style="font-size: 22px; margin-top: -10px; margin-bottom: 20px;">Select Type Bug</h1>
-    <input type="text" id="nomor" placeholder="Nomor Target (628...)">
-    <div class="button-group">
-      <button onclick="kirimKeBot('Forclose')">🪽 Forclose</button>
-      <button onclick="kirimKeBot('Delay')">🐦‍🔥 Delay</button>
-      <button onclick="kirimKeBot('Crash')">💥 Crash</button>
-      <button onclick="kirimKeBot('Blank')">👾  Blank</button>
-    </div>
-    <div id="loading" class="loading hidden">⏳ Process Sending Payload...</div>
-    <div id="status"></div>
-  </div>
-
-  <script>
-    const text = "Welcome To Web Api By ZalOfficial";
-    let i = 0;
-    function typeEffect() {
-      if (i < text.length) {
-        document.getElementById("type-text").innerHTML += text.charAt(i);
-        i++;
-        setTimeout(typeEffect, 55);
-      }
-    }
-    window.onload = typeEffect;
-
-    function login() {
-      const user = document.getElementById("username").value;
-      const pass = document.getElementById("password").value;
-
-      if (user === "Rename" && pass === "DevRename") {
-        document.getElementById("loginBox").classList.add("hidden");
-        document.getElementById("mainContent").classList.remove("hidden");
-        document.getElementById("logoutBtn").style.display = "inline-block";
-      } else {
-        alert("❌ Login gagal! Username / password salah.");
-      }
-    }
-
-    function logout() {
-      document.getElementById("mainContent").classList.add("hidden");
-      document.getElementById("loginBox").classList.remove("hidden");
-      document.getElementById("logoutBtn").style.display = "none";
-      document.getElementById("username").value = "";
-      document.getElementById("password").value = "";
-      document.getElementById("status").innerHTML = "";
-    }
-
-    function kirimKeBot(mode) {
-      const nomor = document.getElementById("nomor").value;
-      const status = document.getElementById("status");
-      const loading = document.getElementById("loading");
-
-      if (!nomor) {
-        alert("⚠️ Masukkan nomor target terlebih dahulu!");
-        return;
-      }
-
-      status.innerHTML = "";
-      loading.classList.remove("hidden");
-
-      fetch("https://your-server.com/send", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ nomor: nomor, mode: mode })
-      })
-      .then(res => res.text())
-      .then(res => {
-        loading.classList.add("hidden");
-        status.innerHTML = `<span style="color: #00ff90;">✅ Success Sending Payload!</span>`;
-      })
-      .catch(err => {
-        loading.classList.add("hidden");
-        status.innerHTML = `<span style="color: red;">❌  Failed To Send  Payload!</span>`;
-      });
-    }
-  </script>
-
-  <div class="footer-info">
-    Developer <strong>ZalOfficial</strong><br>
-    Server Closed ❌
-  </div>
-
 </body>
 </html>
