@@ -2,8 +2,9 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <title>TheEnd Execution</title>
+  <title>Web Api By ZalOfficial</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap" rel="stylesheet">
   <style>
     * {
       margin: 0;
@@ -12,126 +13,192 @@
     }
 
     body {
-      font-family: Arial, sans-serif;
-      background-color: #111;
-      color: white;
+      font-family: 'Orbitron', sans-serif;
+      background: radial-gradient(circle at top, #010f1f, #000000);
+      color: #00bfff;
       min-height: 100vh;
       display: flex;
-      flex-direction: column;
-      justify-content: center;
       align-items: center;
+      justify-content: center;
       text-align: center;
-      padding: 20px;
+      padding-bottom: 90px;
     }
 
-    h1 {
-      font-size: 48px;
-      font-weight: bold;
-      margin-bottom: 50px;
+    .container {
+      background: rgba(0, 0, 64, 0.2);
+      border: 2px solid #00bfff;
+      border-radius: 20px;
+      padding: 40px 30px;
+      width: 90%;
+      max-width: 480px;
+      box-shadow: 0 0 35px #00bfff99;
+      backdrop-filter: blur(14px);
+      animation: fadeIn 1s ease-in-out;
     }
 
-    input[type="text"], input[type="password"] {
-      padding: 18px;
-      font-size: 18px;
-      width: 95%;
-      max-width: 450px;
+    #type-text {
+      font-size: 26px;
+      margin-bottom: 30px;
+      color: #00d9ff;
+      text-shadow: 0 0 10px #00bfff, 0 0 25px #0099ff;
+      min-height: 36px;
+    }
+
+    input {
+      background: rgba(255, 255, 255, 0.07);
+      border: 1px solid #00bfff99;
       border-radius: 12px;
-      border: 1px solid #ccc;
-      margin-bottom: 25px;
-      text-align: center;
-      background: white;
-      color: black;
+      padding: 14px;
+      font-size: 16px;
+      color: #00d9ff;
+      width: 100%;
+      margin-bottom: 15px;
       outline: none;
+      text-align: center;
     }
 
-    .login-box button, .button-group button {
-      margin: 10px;
-      padding: 15px 35px;
-      font-size: 18px;
-      font-weight: bold;
-      border: none;
-      border-radius: 10px;
-      background-color: #007bff;
+    input::placeholder {
+      color: #66cfff;
+    }
+
+    button {
+      background: linear-gradient(to right, #0077ff, #00bfff);
       color: white;
+      border: none;
+      border-radius: 12px;
+      padding: 12px 30px;
+      font-size: 15px;
+      font-weight: bold;
       cursor: pointer;
-      transition: background 0.3s, transform 0.2s;
+      box-shadow: 0 0 14px #00bfff;
+      transition: 0.3s ease;
     }
 
-    .login-box button:hover, .button-group button:hover {
-      background-color: #0056b3;
+    button:hover {
       transform: scale(1.05);
+      background: linear-gradient(to right, #00bfff, #0077ff);
     }
 
-    .hidden {
-      display: none;
+    .button-group {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+      margin-top: 20px;
     }
 
     #logoutBtn {
       position: absolute;
       top: 20px;
       right: 20px;
-      font-size: 14px;
-      padding: 10px 20px;
-      background-color: red;
+      padding: 8px 16px;
+      background: crimson;
       color: white;
       border: none;
       border-radius: 8px;
       cursor: pointer;
+      font-weight: bold;
+      display: none;
+      box-shadow: 0 0 10px crimson;
+    }
+
+    .hidden {
       display: none;
     }
 
-    #status {
-      margin-top: 20px;
-      font-size: 16px;
+    .loading {
+      font-size: 14px;
+      color: #66cfff;
+      margin-top: 10px;
+      font-style: italic;
     }
 
-    .loading {
-      margin-top: 10px;
+    #status {
+      margin-top: 12px;
       font-size: 15px;
-      color: #ccc;
+    }
+
+    .footer-info {
+      position: fixed;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 14px;
+      text-align: center;
+      color: #00eaff;
+      font-family: 'Orbitron', sans-serif;
+      text-shadow: 0 0 6px #00d9ff;
+      line-height: 1.6em;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    @keyframes fadeIn {
+      from {
+        transform: translateY(30px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
     }
   </style>
 </head>
 <body>
 
-  <h1>TheEnd Execution</h1>
+  <button id="logoutBtn" onclick="logout()">LOGOUT</button>
 
-  <button id="logoutBtn" onclick="logout()">LOG OUT</button>
-
-  <div class="login-box" id="loginBox">
-    <input type="text" id="username" placeholder="Username"><br>
-    <input type="password" id="password" placeholder="Password"><br>
-    <button onclick="login()">LOGIN</button>
+  <div class="container" id="loginBox">
+    <h1 id="type-text"></h1>
+    <input type="text" id="username" placeholder="Username">
+    <input type="password" id="password" placeholder="Password">
+    <button onclick="login()">ENTER</button>
   </div>
 
-  <div id="mainContent" class="hidden">
-    <input type="text" id="nomor" placeholder="Masukkan Nomor Target"><br>
+  <div class="container hidden" id="mainContent">
+    <h1 style="font-size: 22px; margin-top: -10px; margin-bottom: 20px;">Select Type Bug</h1>
+    <input type="text" id="nomor" placeholder="Nomor Target (628...)">
     <div class="button-group">
-      <button onclick="kirimKeBot('Forclose')">Forclose</button>
-      <button onclick="kirimKeBot('INVIS')">Delay</button>
+      <button onclick="kirimKeBot('Forclose')">🪽 Forclose</button>
+      <button onclick="kirimKeBot('Delay')">🐦‍🔥 Delay</button>
+      <button onclick="kirimKeBot('Crash')">💥 Crash</button>
+      <button onclick="kirimKeBot('Blank')">👾  Blank</button>
     </div>
-    <div id="loading" class="loading hidden">Mengirim...</div>
+    <div id="loading" class="loading hidden">⏳ Process Sending Payload...</div>
     <div id="status"></div>
   </div>
 
   <script>
+    const text = "Welcome To Web Api By ZalOfficial";
+    let i = 0;
+    function typeEffect() {
+      if (i < text.length) {
+        document.getElementById("type-text").innerHTML += text.charAt(i);
+        i++;
+        setTimeout(typeEffect, 55);
+      }
+    }
+    window.onload = typeEffect;
+
     function login() {
       const user = document.getElementById("username").value;
       const pass = document.getElementById("password").value;
 
-      if (user === "Developer ZalOfficial" && pass === "ZalGanteng") {
-        document.getElementById("loginBox").style.display = "none";
+      if (user === "Rename" && pass === "DevRename") {
+        document.getElementById("loginBox").classList.add("hidden");
         document.getElementById("mainContent").classList.remove("hidden");
         document.getElementById("logoutBtn").style.display = "inline-block";
       } else {
-        alert("Login gagal! Username atau password salah.");
+        alert("❌ Login gagal! Username / password salah.");
       }
     }
 
     function logout() {
       document.getElementById("mainContent").classList.add("hidden");
-      document.getElementById("loginBox").style.display = "block";
+      document.getElementById("loginBox").classList.remove("hidden");
       document.getElementById("logoutBtn").style.display = "none";
+      document.getElementById("username").value = "";
+      document.getElementById("password").value = "";
       document.getElementById("status").innerHTML = "";
     }
 
@@ -141,7 +208,7 @@
       const loading = document.getElementById("loading");
 
       if (!nomor) {
-        alert("Masukkan nomor terlebih dahulu!");
+        alert("⚠️ Masukkan nomor target terlebih dahulu!");
         return;
       }
 
@@ -150,22 +217,25 @@
 
       fetch("https://your-server.com/send", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ nomor: nomor, mode: mode })
       })
       .then(res => res.text())
       .then(res => {
         loading.classList.add("hidden");
-        status.innerHTML = `<span style="color: green;">✅ Berhasil dikirim!</span>`;
+        status.innerHTML = `<span style="color: #00ff90;">✅ Success Sending Payload!</span>`;
       })
       .catch(err => {
         loading.classList.add("hidden");
-        status.innerHTML = `<span style="color: red;">Succes Sending Bug By ZalOfficial</span>`;
+        status.innerHTML = `<span style="color: red;">❌  Failed To Send  Payload!</span>`;
       });
     }
   </script>
+
+  <div class="footer-info">
+    Developer <strong>ZalOfficial</strong><br>
+    Server Closed ❌
+  </div>
 
 </body>
 </html>
