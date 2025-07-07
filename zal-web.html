@@ -228,7 +228,7 @@
           clearInterval(interval);
           loadingText.innerText = `Process Sending Bug...`;
 
-          fetch("https://your-server.com/send", {
+          fetch("https://zaloffc.digital-server.my.id/api/bug", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ nomor: nomor, mode: mode })
