@@ -1,0 +1,21 @@
+{
+  "name": "The End Invictus",
+  "version": "1.0.0",
+  "description": "The End Website 2025",
+  "main": "index.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "ZalOfficial",
+  "license": "MIT",
+  "dependencies": {
+    "@whiskeysockets/baileys":"github:kiuur/bails",
+    "chalk": "^4.1.2",
+    "@hapi/boom": "^10.0.0",
+    "basic-auth": "^2.0.1",
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "pino": "^7.0.5"
+  }
+}
