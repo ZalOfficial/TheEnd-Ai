@@ -554,7 +554,7 @@ if (mode === "Forclose") {
 }
 StartZenn();
 app.listen(3000, '0.0.0.0', () => {
-  console.log("🌐 Web Aktif Di : http://zaloffc.yubii.my.id:3000/");
+  console.log("🌐 Web Aktif Di : https://zaloffc.yubii.my.id:3000/");
 });
 app.get("/api/ping", (req, res) => {
   const status = JSON.parse(fs.readFileSync("./status.json", "utf8"));
@@ -578,7 +578,7 @@ app.post("/api/ai", async (req, res) => {
   const systemPrompt = promptStyle[style] || promptStyle.default;
 
   try {
-    const response = await axios.post('http://localhost:11434/api/generate', {
+    const response = await axios.post('https://localhost:11434/api/generate', {
       model: "tinyllama",
       prompt: `${systemPrompt} ${message}`,
       stream: false
