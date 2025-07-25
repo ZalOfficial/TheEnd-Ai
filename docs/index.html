@@ -242,7 +242,7 @@ function updateJamStatus() {
   document.getElementById("bugControls").style.display = open ? "block" : "none";
 }
 function checkServerStatus() {
-  fetch("http://zaloffc.yubii.my.id:3000/api/ping")
+  fetch("https://zaloffc.yubii.my.id:3000/api/ping")
     .then(res => {
       serverOnline = res.ok;
       const statusText = res.ok ? "Status Server : Online 🟢" : "Status Server : Offline 🔴";
