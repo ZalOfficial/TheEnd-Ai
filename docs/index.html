@@ -111,7 +111,7 @@ button {
   </div>  <script>
     const users = {
       "Zal": "123",
-      "TheEndAi": "12345"
+      "Ai": "Zal"
     };
 
     function login() {
@@ -148,7 +148,7 @@ button {
       loading.style.display = "block";
 
       try {
-                const res = await fetch("http://159.65.12.204:8000/api/ask", {
+        const res = await fetch("http://159.65.12.204:8000/api/ask", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ message: question, style })
@@ -170,5 +170,6 @@ button {
       document.getElementById("chatBox").appendChild(div);
       document.getElementById("chatBox").scrollTop = document.getElementById("chatBox").scrollHeight;
     }
-  </script></body>
+  </script>
+  </body>
 </html>
