@@ -10,7 +10,7 @@ app.use(cors());
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
-const OPENROUTER_API_KEY = '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';
+const OPENROUTER_API_KEY = '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';
 
 app.post('/api/ask', async (req, res) => {
   const { message, style } = req.body;
@@ -31,7 +31,7 @@ app.post('/api/ask', async (req, res) => {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        model: "mistralai/mistral-7b-instruct",
+        model: "mistralai/mistral-7b-instruct:free",
         messages: [
           { role: "system", content: systemPrompt },
           { role: "user", content: message }
