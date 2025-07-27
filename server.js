@@ -10,7 +10,7 @@ app.use(cors());
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
-const OPENROUTER_API_KEY = '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';
+const OPENROUTER_API_KEY = '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';
 
 app.post('/api/ask', async (req, res) => {
   const { message, style } = req.body;
