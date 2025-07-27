@@ -148,7 +148,7 @@ button {
       loading.style.display = "block";
 
       try {
-        const res = await fetch("http://159.65.12.204:8000/api/ask", {
+                const res = await fetch("http://159.65.12.204:8000/api/ask", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ message: question, style })
