@@ -1,8 +1,9 @@
-<!DOCTYPE html><html lang="id">
+<!DOCTYPE html>
+<html lang="id">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AI Hosting Assistant</title>
+  <title>The End AI Hosting Assistant</title>
   <style>
     body {
       background: #0f0f0f;
@@ -13,88 +14,88 @@
       justify-content: center;
       height: 100vh;
       margin: 0;
-    }.container {
-  background: #1a1a1a;
-  border: 1px solid #333;
-  border-radius: 10px;
-  padding: 25px;
-  width: 100%;
-  max-width: 600px;
-  box-shadow: 0 0 20px #00eaff33;
-  animation: fadeIn 0.5s ease;
-}
+    }
 
-h2 {
-  text-align: center;
-  color: #00eaff;
-}
+    .container {
+      background: #1a1a1a;
+      border: 1px solid #333;
+      border-radius: 10px;
+      padding: 25px;
+      width: 100%;
+      max-width: 600px;
+      box-shadow: 0 0 20px #00eaff33;
+      animation: fadeIn 0.5s ease;
+    }
 
-#chatBox {
-  height: 300px;
-  overflow-y: auto;
-  background: #111;
-  padding: 10px;
-  border-radius: 8px;
-  margin-bottom: 15px;
-}
+    h2 {
+      text-align: center;
+      color: #00eaff;
+    }
 
-.bubble {
-  padding: 10px 14px;
-  border-radius: 10px;
-  margin-bottom: 8px;
-  max-width: 90%;
-  word-wrap: break-word;
-}
+    #chatBox {
+      height: 300px;
+      overflow-y: auto;
+      background: #111;
+      padding: 10px;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      display: flex;
+      flex-direction: column;
+    }
 
-.user {
-  background: #00eaff;
-  color: #000;
-  align-self: flex-end;
-  margin-left: auto;
-}
+    .bubble {
+      padding: 10px 14px;
+      border-radius: 10px;
+      margin-bottom: 8px;
+      max-width: 90%;
+      word-wrap: break-word;
+    }
 
-.ai {
-  background: #333;
-  color: #fff;
-  align-self: flex-start;
-  margin-right: auto;
-}
+    .user {
+      background: #00eaff;
+      color: #000;
+      align-self: flex-end;
+    }
 
-input, select, button {
-  width: 100%;
-  padding: 10px;
-  margin-top: 10px;
-  border-radius: 10px;
-  border: none;
-  font-size: 15px;
-  background: #111;
-  color: white;
-}
+    .ai {
+      background: #333;
+      color: #fff;
+      align-self: flex-start;
+    }
 
-button {
-  background: linear-gradient(to right, #00eaff, #0088cc);
-  color: black;
-  font-weight: bold;
-  cursor: pointer;
-}
+    input, select, button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      border-radius: 10px;
+      border: none;
+      font-size: 15px;
+      background: #111;
+      color: white;
+    }
 
-.hidden { display: none; }
-.loading { text-align: center; color: #888; margin-top: 10px; font-size: 14px; }
+    button {
+      background: linear-gradient(to right, #00eaff, #0088cc);
+      color: black;
+      font-weight: bold;
+      cursor: pointer;
+    }
 
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
+    .loading {
+      text-align: center;
+      color: #888;
+      margin-top: 10px;
+      font-size: 14px;
+    }
 
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
   </style>
 </head>
-<body>  <div class="container" id="loginBox">
-    <h2>Login Ke The End Ai</h2>
-    <input type="text" id="username" placeholder="Username" />
-    <input type="password" id="password" placeholder="Password" />
-    <button onclick="login()">Login</button>
-    <p id="loginStatus" style="color:#ff4444;text-align:center;margin-top:10px;"></p>
-  </div>  <div class="container hidden" id="chatPanel">
+<body>
+  <div class="container">
     <h2>The End AI Hosting Assistant</h2>
     <div id="chatBox"></div>
     <input type="text" id="question" placeholder="Tulis pertanyaanmu di sini..." />
@@ -106,35 +107,10 @@ button {
       <option value="default">Netral</option>
     </select>
     <button onclick="askAI()">Tanya AI</button>
-    <div class="loading" id="loading" style="display:none;">The EndAI Lagi Mikir...</div>
-    <button onclick="logout()" style="margin-top: 10px; background:#333; color:white;">Logout</button>
-  </div>  <script>
-    const users = {
-      "Zal": "123",
-      "Ai": "Zal"
-    };
+    <div class="loading" id="loading" style="display:none;">🧠 The End AI lagi mikir...</div>
+  </div>
 
-    function login() {
-      const u = document.getElementById("username").value;
-      const p = document.getElementById("password").value;
-      const status = document.getElementById("loginStatus");
-
-      if (users[u] && users[u] === p) {
-        document.getElementById("loginBox").classList.add("hidden");
-        document.getElementById("chatPanel").classList.remove("hidden");
-      } else {
-        status.innerText = "❌ Username atau password salah!";
-      }
-    }
-
-    function logout() {
-      document.getElementById("chatPanel").classList.add("hidden");
-      document.getElementById("loginBox").classList.remove("hidden");
-      document.getElementById("username").value = "";
-      document.getElementById("password").value = "";
-      document.getElementById("chatBox").innerHTML = "";
-    }
-
+  <script>
     async function askAI() {
       const question = document.getElementById("question").value.trim();
       const style = document.getElementById("style").value;
@@ -143,7 +119,7 @@ button {
 
       if (!question) return;
 
-      addBubble("Kamu : " + question, "user");
+      addBubble("Kamu: " + question, "user");
       document.getElementById("question").value = "";
       loading.style.display = "block";
 
@@ -155,9 +131,10 @@ button {
         });
 
         const data = await res.json();
-        addBubble("🤖 The End AI : " + (data.response || "Ga bisa jawab bang"), "ai");
+        const reply = data.response || "⚠️ AI gak bisa jawab bang...";
+        addBubble("🤖 The End AI: " + reply, "ai");
       } catch (err) {
-        addBubble("❌ Gagal konek ke AI", "ai");
+        addBubble("❌ Gagal konek ke AI Backend", "ai");
       }
 
       loading.style.display = "none";
@@ -171,5 +148,5 @@ button {
       document.getElementById("chatBox").scrollTop = document.getElementById("chatBox").scrollHeight;
     }
   </script>
-  </body>
+</body>
 </html>
